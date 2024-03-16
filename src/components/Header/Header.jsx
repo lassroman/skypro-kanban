@@ -1,4 +1,6 @@
 import { useState } from "react"
+import * as S from "./Header.styled";
+import { Container } from "../../styled/common/Common.styled";
 
 export default function Header({ onCardAdd }) {
     const [isOpened, setIsOpened] = useState(false);
@@ -6,9 +8,9 @@ export default function Header({ onCardAdd }) {
         setIsOpened((prev) => !prev)
     }
     return (
-        <header className="header">
-            <div className="container">
-                <div className="header__block">
+        <S.StyledHeader>
+            <Container>
+                <S.HeaderBlock>
                     <div className="header__logo _show _light">
                         <a href="" target="_self">
                             <img src="images/logo.png" alt="logo" />
@@ -41,8 +43,8 @@ export default function Header({ onCardAdd }) {
                         </div>)}
 
                     </nav>
-                </div>
-            </div>
-        </header>
+                </S.HeaderBlock>
+            </Container>
+        </S.StyledHeader>
     )
 }
