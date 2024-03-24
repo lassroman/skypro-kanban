@@ -1,4 +1,6 @@
 import { useState } from "react"
+import * as S from "./Header.styled";
+import { Container } from "../../styled/common/Common.styled";
 
 export default function Header({ onCardAdd }) {
     const [isOpened, setIsOpened] = useState(false);
@@ -6,43 +8,46 @@ export default function Header({ onCardAdd }) {
         setIsOpened((prev) => !prev)
     }
     return (
-        <header className="header">
-            <div className="container">
-                <div className="header__block">
-                    <div className="header__logo _show _light">
+        <S.StyledHeader>
+            <Container>
+                <S.HeaderBlock>
+                    <S.HeaderLogo className="_show _light">
                         <a href="" target="_self">
                             <img src="images/logo.png" alt="logo" />
                         </a>
-                    </div>
-                    <div className="header__logo _dark">
+                    </S.HeaderLogo>
+                    <S.HeaderLogo className="_dark">
                         <a href="" target="_self">
                             <img src="images/logo_dark.png" alt="logo" />
                         </a>
-                    </div>
-                    <nav className="header__nav">
-                        <button onClick={onCardAdd} className="header__btn-main-new _hover01" id="btnMainNew">
-                            Создать новую задачу
-                        </button>
-                        <div onClick={togglePopup} className="header__user _hover02">Ivan Ivanov</div>
-                        {isOpened && (<div
-                            className="header__pop-user-set pop-user-set"
+                    </S.HeaderLogo>
+                    <S.HeaderNav>
+                        <S.HeaderMainNewBtn onClick={onCardAdd} id="btnMainNew">
+                            <S.HeaderMainNewBtnLink>
+                                Создать новую задачу
+                            </S.HeaderMainNewBtnLink>
+                        </S.HeaderMainNewBtn>
+                        <S.HeaderUser onClick={togglePopup} >
+                            Ivan Ivanov
+                        </S.HeaderUser>
+                        {isOpened && (<S.HeaderPopUserSet
                             id="user-set-target"
                         >
                             {/* <a href="">x</a> */}
-                            <p className="pop-user-set__name">Ivan Ivanov</p>
-                            <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                            <div className="pop-user-set__theme">
-                                <p>Темная тема</p>
-                                <input type="checkbox" className="checkbox" name="checkbox" />
-                            </div>
-                            <button type="button" className="_hover03">
-                                <a href="#popExit">Выйти</a>
-                            </button>
-                        </div>)}
+                            <S.HeaderUserName>Ivan Ivanov</S.HeaderUserName>
+                            <S.HeaderUserMail>ivan.ivanov@gmail.com</S.HeaderUserMail>
+                            <S.HeaderUserTheme>
+                                <S.HeaderUserThemeText>Темная тема</S.HeaderUserThemeText>
+                                <S.HeaderUserSetThemeInp type="checkbox" name="checkbox" />
+                            </S.HeaderUserTheme>
+                            <S.HeaderUserSetBtn type="button" >
+                                <S.HeaderUserSetBtn href="#popExit">Выйти</S.HeaderUserSetBtn>
+                            </S.HeaderUserSetBtn>
+                        </S.HeaderPopUserSet>)}
 
-                    </nav>
-                </div>
-            </div>
-        </header>
+                    </S.HeaderNav>
+                </S.HeaderBlock>
+            </Container>
+        </S.StyledHeader>
     )
 }
