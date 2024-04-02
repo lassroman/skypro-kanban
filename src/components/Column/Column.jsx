@@ -8,12 +8,8 @@ export default function Column({ title, cardList }) {
                 <S.ColumnTitleText>{title}</S.ColumnTitleText>
             </S.ColumnTitle>
             <S.ColumnCards>
-                {cardList.map((card) => <Card topic={card.theme} title={card.title} date={card.date} key={card.id} />)}
-                {/* <Card topic={"Web design"} title={"Новая задача"} />
-                <Card topic={"Reserch"} title={"Новая задача"} />
-                <Card topic={"Web design"} title={"Новая задача"} />
-                <Card topic={"Copywriting"} title={"Новая задача"} />
-                <Card topic={"Web design"} title={"Новая задача"} /> */}
+                {cardList.map((card) => <Card topic={card.theme} title={card.title} date={card.date} key={card.id} id={card.id} />)}
+
             </S.ColumnCards>
         </S.ColumnMain>
     )

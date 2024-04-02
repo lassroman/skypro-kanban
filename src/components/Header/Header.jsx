@@ -1,6 +1,8 @@
 import { useState } from "react"
 import * as S from "./Header.styled";
 import { Container } from "../../styled/common/Common.styled";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../lib/appRoutes";
 
 export default function Header({ onCardAdd }) {
     const [isOpened, setIsOpened] = useState(false);
@@ -40,9 +42,9 @@ export default function Header({ onCardAdd }) {
                                 <S.HeaderUserThemeText>Темная тема</S.HeaderUserThemeText>
                                 <S.HeaderUserSetThemeInp type="checkbox" name="checkbox" />
                             </S.HeaderUserTheme>
-                            <S.HeaderUserSetBtn type="button" >
-                                <S.HeaderUserSetBtn href="#popExit">Выйти</S.HeaderUserSetBtn>
-                            </S.HeaderUserSetBtn>
+                            <Link to={appRoutes.EXIT}>
+                                <S.HeaderUserSetBtn >Выйти</S.HeaderUserSetBtn>
+                            </Link>
                         </S.HeaderPopUserSet>)}
 
                     </S.HeaderNav>
