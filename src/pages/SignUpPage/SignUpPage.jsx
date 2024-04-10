@@ -20,8 +20,10 @@ export default function SingUpPage({ login }) {
     const handleReg = async (e) => {
         e.preventDefault();
         await signUp(regData).then((data) => {
-            login(data.newUser)
-        })
+            login(data.user)
+        }).catch((error) => {
+            alert(error);
+        });
     }
     return (
         <S.Wrapper>
@@ -36,7 +38,7 @@ export default function SingUpPage({ login }) {
                                 value={regData.name}
                                 onChange={handleInputChange}
                                 type="text"
-                                name="first-name"
+                                name="name"
                                 id="first-name"
                                 placeholder="Имя"
                             />

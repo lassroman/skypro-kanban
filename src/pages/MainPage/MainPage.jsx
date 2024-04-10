@@ -60,7 +60,7 @@ export default function MainPage({ user }) {
                         {statusList.map((status) => <Column
                             title={status}
                             key={status}
-                            cardList={cards.filter((card) => card.status === status)} />)}
+                            cardList={cards?.filter((card) => card.status === status || [])} />)}
                     </MainContent>
                 )}
             </Wrapper>
