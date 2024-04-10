@@ -1,8 +1,27 @@
+import { useState } from "react"
 import "./signin.css"
 import * as S from "./SignInPage.styled"
+import { signIn } from "../../Api";
 
 
-export default function SingInPage({ login }) {
+
+export default function SignInPage({ login }) {
+    const [loginData, setLoginData] = useState({ login: "", password: "" })
+    const handleInputChange = (e) => {
+        const { name, value } = e.target; // Извлекаем имя поля и его значение
+
+        setLoginData({
+            ...loginData, // Копируем текущие данные из состояния
+            [name]: value, // Обновляем нужное поле
+        });
+    };
+
+    const handleSignIn = async () => {
+
+        await signIn(loginData).then((data) => {
+            login(data.user)
+        })
+    }
     return (
         <S.Wrapper>
             <S.Container>
@@ -13,20 +32,23 @@ export default function SingInPage({ login }) {
                         </S.ModalTitle>
                         <S.ModalFormLogin id="formLogIn" action="#">
                             <S.ModalInput
-
+                                value={loginData.login}
+                                onChange={handleInputChange}
                                 type="text"
                                 name="login"
                                 id="formlogin"
                                 placeholder="Эл. почта"
                             />
                             <S.ModalInput
+                                value={loginData.password}
+                                onChange={handleInputChange}
                                 type="password"
                                 name="password"
                                 id="formpassword"
                                 placeholder="Пароль"
                             />
-                            <S.SignInBtn onClick={login}>
-                                <S.SignInBtnText>Войти</S.SignInBtnText>
+                            <S.SignInBtn >
+                                <S.SignInBtnText onClick={handleSignIn}>Войти</S.SignInBtnText>
                             </S.SignInBtn>
                             <S.ModalFormGroup>
                                 <S.ModalFormGroupPar>Нужно зарегистрироваться?</S.ModalFormGroupPar>

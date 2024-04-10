@@ -58,7 +58,7 @@ text-align: center;
   margin-bottom: 20px;
   `;
 
-export const ModalFormLogin = styled.form`
+export const ModalFormLogin = styled.div`
 width: 100%;
   display: flex;
   flex-direction: column;

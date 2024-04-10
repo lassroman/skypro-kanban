@@ -8,7 +8,7 @@ export default function Column({ title, cardList }) {
                 <S.ColumnTitleText>{title}</S.ColumnTitleText>
             </S.ColumnTitle>
             <S.ColumnCards>
-                {cardList.map((card) => <Card topic={card.theme} title={card.title} date={card.date} key={card.id} id={card.id} />)}
+                {cardList.map((card) => <Card topic={card.topic} title={card.title} date={card.date} key={card._id} id={card._id} />)}
 
             </S.ColumnCards>
         </S.ColumnMain>
