@@ -2,6 +2,8 @@ import { useState } from "react"
 import "./signin.css"
 import * as S from "./SignInPage.styled"
 import { signIn } from "../../Api";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../lib/appRoutes";
 
 
 
@@ -52,7 +54,9 @@ export default function SignInPage({ login }) {
                             </S.SignInBtn>
                             <S.ModalFormGroup>
                                 <S.ModalFormGroupPar>Нужно зарегистрироваться?</S.ModalFormGroupPar>
-                                <S.ModalFormGroupSpan>Регистрируйтесь здесь</S.ModalFormGroupSpan>
+                                <Link to={appRoutes.SIGNUP}>
+                                    <S.ModalFormGroupSpan>Регистрируйтесь здесь</S.ModalFormGroupSpan>
+                                </Link>
                             </S.ModalFormGroup>
                         </S.ModalFormLogin>
                     </S.ModalBlock>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import * as S from "../SignInPage/SignInPage.styled";
 import { ModalFormLogin, SignUpBtn } from "./SignUpPage.styled";
 import { signUp } from "../../Api";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../lib/appRoutes";
 
 export default function SingUpPage({ login }) {
     const [regData, setRegData] = useState({ name: "", login: "", password: "" })
@@ -19,8 +21,10 @@ export default function SingUpPage({ login }) {
 
     const handleReg = async (e) => {
         e.preventDefault();
+        console.log(regData)
         await signUp(regData).then((data) => {
-            login(data.user)
+            console.log(data)
+            login(data.newUser)
         }).catch((error) => {
             alert(error);
         });
@@ -59,12 +63,16 @@ export default function SingUpPage({ login }) {
                                 placeholder="Пароль"
                             />
                             <SignUpBtn >
-                                <S.SignInBtnText onClick={handleReg}>Зарегистрироваться</S.SignInBtnText>{" "}
+                                <Link to={appRoutes.MAIN}>
+                                    <S.SignInBtnText onClick={handleReg}>Зарегистрироваться</S.SignInBtnText>{" "}
+                                </Link>
                             </SignUpBtn>
                             <S.ModalFormGroup>
                                 <S.ModalFormGroupPar>
                                     Уже есть аккаунт?
-                                    <S.ModalFormGroupSpan>Войдите здесь</S.ModalFormGroupSpan>
+                                    <Link to={appRoutes.SIGNIN}>
+                                        <S.ModalFormGroupSpan>Войдите здесь</S.ModalFormGroupSpan>
+                                    </Link>
                                 </S.ModalFormGroupPar>
                             </S.ModalFormGroup>
                         </ModalFormLogin>
