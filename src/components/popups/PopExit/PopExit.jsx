@@ -11,11 +11,11 @@ export default function PopExit({ logout }) {
                     </div>
                     <form className="pop-exit__form" id="formExit" action="#">
                         <div className="pop-exit__form-group">
-                            <Link to={appRoutes.SIGNIN}>
-                                <span onClick={logout} className="pop-exit__exit-yes _hover01" id="exitYes">
-                                    Да, выйти
-                                </span>
-                            </Link>
+
+                            <span onClick={logout} className="pop-exit__exit-yes _hover01" id="exitYes">
+                                Да, выйти
+                            </span>
+
                             <Link to={appRoutes.MAIN}>
                                 <span className="pop-exit__exit-no _hover03" id="exitNo">
                                     Нет, остаться

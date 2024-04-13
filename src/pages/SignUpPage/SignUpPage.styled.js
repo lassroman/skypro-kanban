@@ -24,3 +24,16 @@ width: 100%;
        
     height: 40px;
 }`;
+
+
+export const ModalFormLogin = styled.div`
+ width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & input:not(:last-child) {
+    margin-bottom: 8px;
+    
+  }
+`;

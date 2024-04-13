@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { cardList } from '../../data';
 import Header from '../../components/Header/Header';
 import MainContent from '../../components/MainContent/MainContent';
 import Column from '../../components/Column/Column';
 import { Outlet } from 'react-router-dom';
 import { Wrapper } from '../../styled/common/Common.styled';
 import { GlobalStyle } from '../../styled/common/Global.styled';
+import { getTodos } from '../../Api';
 
 
 
@@ -17,15 +17,25 @@ const statusList = [
     "Готово",
 ];
 
-export default function MainPage() {
-    const [cards, setCards] = useState(cardList);
+export default function MainPage({ user }) {
+    const [cards, setCards] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setIsLoading(false);
+    //     }, 2000); // 2 секунды задержки
+    // }, []);
+
     useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000); // 2 секунды задержки
-    }, []);
+        getTodos({ token: user.token }).then((cardList) => {
+            console.log(cardList);
+            setCards(cardList.tasks);
+            setIsLoading(false)
+        }).catch((error) => {
+            alert(error)
+        })
+    }, [user])
 
     function onCardAdd() {
         // Логика добавления карточки
@@ -50,7 +60,7 @@ export default function MainPage() {
                         {statusList.map((status) => <Column
                             title={status}
                             key={status}
-                            cardList={cards.filter((card) => card.status === status)} />)}
+                            cardList={cards?.filter((card) => card.status === status || [])} />)}
                     </MainContent>
                 )}
             </Wrapper>
