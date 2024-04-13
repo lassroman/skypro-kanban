@@ -26,7 +26,7 @@ export default function SingUpPage({ login }) {
             console.log(data)
             login(data.newUser)
         }).catch((error) => {
-            alert(error);
+            alert(error.message);
         });
     }
     return (

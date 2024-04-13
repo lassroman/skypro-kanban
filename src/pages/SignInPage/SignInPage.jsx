@@ -22,7 +22,9 @@ export default function SignInPage({ login }) {
 
         await signIn(loginData).then((data) => {
             login(data.user)
-        })
+        }).catch((error) => {
+            alert(error.message)
+        });
     }
     return (
         <S.Wrapper>
