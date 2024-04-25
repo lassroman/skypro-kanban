@@ -2,26 +2,31 @@ import { useState } from "react"
 import "./signin.css"
 import * as S from "./SignInPage.styled"
 import { signIn } from "../../Api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
+import { useUser } from "../../hooks/useUser";
 
 
 
-export default function SignInPage({ login }) {
+export default function SignInPage() {
+    const { login } = useUser();
+    const navigate = useNavigate();
     const [loginData, setLoginData] = useState({ login: "", password: "" })
+
     const handleInputChange = (e) => {
-        const { name, value } = e.target; // Извлекаем имя поля и его значение
+        const { name, value } = e.target;
 
         setLoginData({
-            ...loginData, // Копируем текущие данные из состояния
-            [name]: value, // Обновляем нужное поле
+            ...loginData,
+            [name]: value,
         });
     };
 
     const handleSignIn = async () => {
 
         await signIn(loginData).then((data) => {
-            login(data.user)
+            login(data.user);
+            navigate(appRoutes.MAIN);
         }).catch((error) => {
             alert(error.message)
         });

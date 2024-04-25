@@ -6,6 +6,8 @@ import { Outlet } from 'react-router-dom';
 import { Wrapper } from '../../styled/common/Common.styled';
 import { GlobalStyle } from '../../styled/common/Global.styled';
 import { getTodos } from '../../Api';
+import { useUser } from '../../hooks/useUser';
+import { useTasks } from '../../hooks/useTasks';
 
 
 
@@ -17,15 +19,10 @@ const statusList = [
     "Готово",
 ];
 
-export default function MainPage({ user }) {
-    const [cards, setCards] = useState([]);
-
+export default function MainPage() {
+    const { user } = useUser();
+    const { cards, setCards } = useTasks();
     const [isLoading, setIsLoading] = useState(true)
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setIsLoading(false);
-    //     }, 2000); // 2 секунды задержки
-    // }, []);
 
     useEffect(() => {
         getTodos({ token: user.token }).then((cardList) => {
@@ -35,26 +32,26 @@ export default function MainPage({ user }) {
         }).catch((error) => {
             alert(error)
         })
-    }, [user])
+    }, [user, setCards])
 
-    function onCardAdd() {
-        // Логика добавления карточки
-        const newCard = {
-            id: cards.length + 1,
-            theme: "Web Design",
-            title: "Название задачи",
-            date: "30.10.23",
-            status: "Без статуса",
-        };
-        setCards([...cards, newCard]);
-    }
+    // function onCardAdd() {
+    //     // Логика добавления карточки
+    //     const newCard = {
+    //         id: cards.length + 1,
+    //         theme: "Web Design",
+    //         title: "Название задачи",
+    //         date: "30.10.23",
+    //         status: "Без статуса",
+    //     };
+    //     setCards([...cards, newCard]);
+    // }
     return (
         <>
             {/* <GlobalStyle /> */}
             <Wrapper>
                 <Outlet />
 
-                <Header onCardAdd={onCardAdd} />
+                <Header />
                 {isLoading ? "Данные загружаются..." : (
                     <MainContent>
                         {statusList.map((status) => <Column

@@ -30,7 +30,7 @@ export const HeaderLogo = styled.div`
 width: 85px;
 `;
 
-export const HeaderMainNewBtn = styled.button`
+export const HeaderMainNewBtn = styled.div`
 width: 178px;
   height: 30px;
   border-radius: 4px;
@@ -46,7 +46,7 @@ width: 178px;
   }
   `;
 
-export const HeaderMainNewBtnLink = styled.a`
+export const HeaderMainNewBtnLink = styled.p`
   color: #FFFFFF;
   `;
 

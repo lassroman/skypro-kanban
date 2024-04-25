@@ -22,14 +22,14 @@ export async function getTodos({ token }) {
 
 
 //post
-export async function postTodos(text) {
+export async function postTodos(taskData, token) {
     const response = await fetch(baseHost, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "POST",
         body: JSON.stringify({
-            text,
+            text: taskData,
         }),
     });
 
@@ -43,14 +43,14 @@ export async function postTodos(text) {
 
 
 //put
-export async function putTodo({ text, id }) {
+export async function putTodo({ taskData, id, token }) {
     const response = await fetch(baseHost + `/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "PUT",
         body: JSON.stringify({
-            text,
+            text: taskData,
         }),
     });
 
@@ -63,7 +63,7 @@ export async function putTodo({ text, id }) {
 }
 
 //del
-export async function delTodo({ text, id }) {
+export async function delTodo({ id, token }) {
     const response = await fetch(`https://wedev-api.sky.pro/api/kanban/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
