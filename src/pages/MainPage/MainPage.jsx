@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { Wrapper } from '../../styled/common/Common.styled';
 import { GlobalStyle } from '../../styled/common/Global.styled';
 import { getTodos } from '../../Api';
+import { useUser } from '../../hooks/useUser';
 
 
 
@@ -17,15 +18,11 @@ const statusList = [
     "Готово",
 ];
 
-export default function MainPage({ user }) {
+export default function MainPage() {
+    const { user } = useUser()
     const [cards, setCards] = useState([]);
 
     const [isLoading, setIsLoading] = useState(true)
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setIsLoading(false);
-    //     }, 2000); // 2 секунды задержки
-    // }, []);
 
     useEffect(() => {
         getTodos({ token: user.token }).then((cardList) => {

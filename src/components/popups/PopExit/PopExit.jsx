@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { appRoutes } from "../../../lib/appRoutes"
+import { useUser } from "../../../hooks/useUser";
 
-export default function PopExit({ logout }) {
+export default function PopExit() {
+    const { logout } = useUser();
+    const navigate = useNavigate();
     return (
         <div className="pop-exit" id="popExit">
             <div className="pop-exit__container">
@@ -12,7 +15,10 @@ export default function PopExit({ logout }) {
                     <form className="pop-exit__form" id="formExit" action="#">
                         <div className="pop-exit__form-group">
 
-                            <span onClick={logout} className="pop-exit__exit-yes _hover01" id="exitYes">
+                            <span onClick={() => {
+                                logout();
+                                navigate(appRoutes.SIGNIN)
+                            }} className="pop-exit__exit-yes _hover01" id="exitYes">
                                 Да, выйти
                             </span>
 
