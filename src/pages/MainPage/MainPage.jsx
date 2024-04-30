@@ -26,13 +26,14 @@ export default function MainPage() {
 
     useEffect(() => {
         getTodos({ token: user.token }).then((cardList) => {
-            console.log(cardList);
+            console.log(setCards);
             setCards(cardList.tasks);
             setIsLoading(false)
         }).catch((error) => {
             alert(error)
         })
-    }, [user, setCards])
+    }, [user])
+    console.log(cards);
 
     // function onCardAdd() {
     //     // Логика добавления карточки

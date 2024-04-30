@@ -22,14 +22,16 @@ export async function getTodos({ token }) {
 
 
 //post
-export async function postTodos(taskData, token) {
+export async function postTodos({ taskData, token }) {
+    console.log(taskData);
+    const { date, description, title, topic } = taskData;
     const response = await fetch(baseHost, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "POST",
         body: JSON.stringify({
-            text: taskData,
+            date, description, title, topic
         }),
     });
 

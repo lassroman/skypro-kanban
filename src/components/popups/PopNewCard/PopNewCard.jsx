@@ -30,7 +30,7 @@ export default function PopNewCard() {
             .then((data) => {
                 console.log(data);
                 if (data.error) {
-                    alert('Одно из полей не заполнено!')
+                    alert(data.error)
 
                 }
                 else {
