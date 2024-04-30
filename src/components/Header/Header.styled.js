@@ -30,7 +30,7 @@ export const HeaderLogo = styled.div`
 width: 85px;
 `;
 
-export const HeaderMainNewBtn = styled.div`
+export const HeaderMainNewBtn = styled.button`
 width: 178px;
   height: 30px;
   border-radius: 4px;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import * as S from "./PopNewCard.styled"
 import Calendar from "../../Calendar/Calendar";
 import { useUser } from "../../../hooks/useUser";
 import { Link, useNavigate } from "react-router-dom";
@@ -50,26 +51,24 @@ export default function PopNewCard() {
         });
     };
     return (
-        <div className="pop-new-card" id="popNewCard">
-            <div className="pop-new-card__container">
-                <div className="pop-new-card__block">
-                    <div className="pop-new-card__content">
-                        <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                        <a href="#" className="pop-new-card__close">
-                            ✖
-                        </a>
-                        <div className="pop-new-card__wrap">
-                            <form
-                                className="pop-new-card__form form-new"
+        <S.PopNewCard id="popNewCard">
+            <S.PopNewCardContainer>
+                <S.PopNewCardBlock>
+                    <S.PopNewCardContent>
+                        <S.CardTitleTask>Создание задачи</S.CardTitleTask>
+                        <Link to={appRoutes.MAIN}>
+                            <S.CardClose>✖</S.CardClose>
+                        </Link>
+                        <S.PopNewCardWrap>
+                            <S.PopNewCardForm
                                 id="formNewCard"
                                 action="#"
                             >
-                                <div className="form-new__block">
+                                <S.FormNewBlock>
                                     <label htmlFor="formTitle" className="subttl">
                                         Название задачи
                                     </label>
-                                    <input
-                                        className="form-new__input"
+                                    <S.FormNewInput
                                         type="text"
                                         name="title"
                                         value={newTask.title}
@@ -78,13 +77,12 @@ export default function PopNewCard() {
                                         placeholder="Введите название задачи..."
                                         autoFocus=""
                                     />
-                                </div>
-                                <div className="form-new__block">
+                                </S.FormNewBlock>
+                                <S.FormNewBlock>
                                     <label htmlFor="textArea" className="subttl">
                                         Описание задачи
                                     </label>
-                                    <textarea
-                                        className="form-new__area"
+                                    <S.FormNewArea
                                         name="description"
                                         value={newTask.description}
                                         onChange={handleInputChange}
@@ -92,66 +90,54 @@ export default function PopNewCard() {
                                         placeholder="Введите описание задачи..."
 
                                     />
-                                </div>
-                            </form>
+                                </S.FormNewBlock>
+                            </S.PopNewCardForm>
                             <Calendar
                                 selectedDate={selectedDate}
                                 setSelectedDate={setSelectedDate} />
-                        </div>
-                        {/* <div className="pop-new-card__categories categories">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__themes">
-                                <div className="categories__theme _orange _active-category">
-                                    <p className="_orange">Web Design</p>
-                                </div>
-                                <div className="categories__theme _green">
-                                    <p className="_green">Research</p>
-                                </div>
-                                <div className="categories__theme _purple">
-                                    <p className="_purple">Copywriting</p>
-                                </div>
-                            </div>
-                        </div> */}
-                        <div className="prod_checbox">
-                            <div className="radio-toolbar">
-                                <input
-                                    type="radio"
-                                    id="radio1"
-                                    name="topic"
-                                    value="Web Design"
-                                    onChange={handleInputChange}
-                                />
-                                <label htmlFor="radio1">Web Design</label>
+                        </S.PopNewCardWrap>
+                        <S.PopNewCardCategories>
+                            <S.CategoriesPar>Категория</S.CategoriesPar>
 
-                                <input
-                                    type="radio"
-                                    id="radio2"
-                                    name="topic"
-                                    value="Research"
-                                    onChange={handleInputChange}
+                        </S.PopNewCardCategories>
 
-                                />
-                                <label htmlFor="radio2">Research</label>
+                        <S.RadioTool>
+                            <S.CategoriesThemeInput
+                                type="radio"
+                                id="radio1"
+                                name="topic"
+                                value="Web Design"
+                                onChange={handleInputChange}
+                            />
+                            <S.RadioToolbarLabel1 htmlFor="radio1">Web Design</S.RadioToolbarLabel1>
 
-                                <input type="radio"
-                                    id="radio3"
-                                    name="topic"
-                                    value="Copywriting"
-                                    onChange={handleInputChange}
+                            <S.CategoriesThemeInput
+                                type="radio"
+                                id="radio2"
+                                name="topic"
+                                value="Research"
+                                onChange={handleInputChange}
 
-                                />
-                                <label htmlFor="radio3">Copywriting</label>
-                            </div>
-                        </div>
-                        <button onClick={handleFormSubmit} className="form-new__create _hover01" id="btnCreate">
-                            Создать задачу
-                        </button>
-                        <Link to={appRoutes.MAIN}>
-                            <span className="btn-edit__close _btn-bg _hover01">Закрыть</span>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            />
+                            <S.RadioToolbarLabel2 htmlFor="radio2">Research</S.RadioToolbarLabel2>
+
+                            <S.CategoriesThemeInput
+                                id="radio3"
+                                name="topic"
+                                value="Copywriting"
+                                onChange={handleInputChange}
+
+                            />
+                            <S.RadioToolbarLabel3 htmlFor="radio3">Copywriting</S.RadioToolbarLabel3>
+                        </S.RadioTool>
+                        <S.ButtonDiv>
+                            <S.CreateButton onClick={handleFormSubmit} id="btnCreate">
+                                Создать задачу
+                            </S.CreateButton>
+                        </S.ButtonDiv>
+                    </S.PopNewCardContent>
+                </S.PopNewCardBlock>
+            </S.PopNewCardContainer>
+        </S.PopNewCard >
     )
 }
