@@ -46,7 +46,7 @@ width: 178px;
   }
   `;
 
-export const HeaderMainNewBtnLink = styled.a`
+export const HeaderMainNewBtnLink = styled.p`
   color: #FFFFFF;
   `;
 

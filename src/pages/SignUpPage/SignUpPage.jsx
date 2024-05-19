@@ -2,10 +2,13 @@ import { useState } from "react";
 import * as S from "../SignInPage/SignInPage.styled";
 import { ModalFormLogin, SignUpBtn } from "./SignUpPage.styled";
 import { signUp } from "../../Api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
+import { useUser } from "../../hooks/useUser";
 
-export default function SingUpPage({ login }) {
+export default function SingUpPage() {
+    const { login } = useUser();
+    const navigate = useNavigate();
     const [regData, setRegData] = useState({ name: "", login: "", password: "" })
 
 
@@ -24,7 +27,8 @@ export default function SingUpPage({ login }) {
         console.log(regData)
         await signUp(regData).then((data) => {
             console.log(data)
-            login(data.newUser)
+            login(data.user);
+            navigate(appRoutes.MAIN);
         }).catch((error) => {
             alert(error.message);
         });
