@@ -1,13 +1,9 @@
-
-import './App.css'
-
 import { Route, Routes } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import MainPage from './pages/MainPage/MainPage'
 import TaskPage from './pages/TaskPage/TaskPage'
 import ExitPage from './pages/ExitPage/ExitPage'
 import SignInPage from './pages/SignInPage/SignInPage'
-
 import { appRoutes } from './lib/appRoutes'
 import SignUpPage from './pages/SignUpPage/SignUpPage'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'

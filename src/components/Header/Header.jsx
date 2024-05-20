@@ -3,9 +3,11 @@ import * as S from "./Header.styled";
 import { Container } from "../../styled/common/Common.styled";
 import { Link } from "react-router-dom";
 import { appRoutes } from "../../lib/appRoutes";
+import { useUser } from "../../hooks/useUser";
 
 export default function Header() {
     const [isOpened, setIsOpened] = useState(false);
+    const { user } = useUser()
     function togglePopup() {
         setIsOpened((prev) => !prev)
     }
@@ -13,16 +15,12 @@ export default function Header() {
         <S.StyledHeader>
             <Container>
                 <S.HeaderBlock>
-                    <S.HeaderLogo className="_show _light">
-                        <a href="" target="_self">
-                            <img src="images/logo.png" alt="logo" />
-                        </a>
+
+                    <S.HeaderLogo>
+                        <img src="images/logo.png" alt="logo" />
                     </S.HeaderLogo>
-                    <S.HeaderLogo className="_dark">
-                        <a href="" target="_self">
-                            <img src="images/logo_dark.png" alt="logo" />
-                        </a>
-                    </S.HeaderLogo>
+
+
                     <S.HeaderNav>
                         <Link to={appRoutes.NEW_TASK}>
                             <S.HeaderMainNewBtn id="btnMainNew">
@@ -32,18 +30,18 @@ export default function Header() {
                             </S.HeaderMainNewBtn>
                         </Link>
                         <S.HeaderUser onClick={togglePopup} >
-                            Ivan Ivanov
+                            {user.name}
                         </S.HeaderUser>
                         {isOpened && (<S.HeaderPopUserSet
                             id="user-set-target"
                         >
-                            {/* <a href="">x</a> */}
-                            <S.HeaderUserName>Ivan Ivanov</S.HeaderUserName>
-                            <S.HeaderUserMail>ivan.ivanov@gmail.com</S.HeaderUserMail>
-                            <S.HeaderUserTheme>
+                            <S.HeaderUserName>{user.name}</S.HeaderUserName>
+                            <S.HeaderUserMail>{user.login}</S.HeaderUserMail>
+                            {/* <S.HeaderUserTheme>
                                 <S.HeaderUserThemeText>Темная тема</S.HeaderUserThemeText>
-                                <S.HeaderUserSetThemeInp type="checkbox" name="checkbox" />
-                            </S.HeaderUserTheme>
+                                <S.HeaderUserSetThemeInp
+                                    type="checkbox" name="checkbox" />
+                            </S.HeaderUserTheme> */}
                             <Link to={appRoutes.EXIT}>
                                 <S.HeaderUserSetBtn >Выйти</S.HeaderUserSetBtn>
                             </Link>

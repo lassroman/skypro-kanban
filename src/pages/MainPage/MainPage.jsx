@@ -35,33 +35,19 @@ export default function MainPage() {
     }, [user])
     console.log(cards);
 
-    // function onCardAdd() {
-    //     // Логика добавления карточки
-    //     const newCard = {
-    //         id: cards.length + 1,
-    //         theme: "Web Design",
-    //         title: "Название задачи",
-    //         date: "30.10.23",
-    //         status: "Без статуса",
-    //     };
-    //     setCards([...cards, newCard]);
-    // }
     return (
-        <>
-            {/* <GlobalStyle /> */}
-            <Wrapper>
-                <Outlet />
 
-                <Header />
-                {isLoading ? "Данные загружаются..." : (
-                    <MainContent>
-                        {statusList.map((status) => <Column
-                            title={status}
-                            key={status}
-                            cardList={cards?.filter((card) => card.status === status)} />)}
-                    </MainContent>
-                )}
-            </Wrapper>
-        </>
+        <Wrapper>
+            <Outlet />
+            <Header />
+            {isLoading ? "Данные загружаются..." : (
+                <MainContent>
+                    {statusList.map((status) => <Column
+                        title={status}
+                        key={status}
+                        cardList={cards?.filter((card) => card.status === status)} />)}
+                </MainContent>
+            )}
+        </Wrapper>
     )
 }
