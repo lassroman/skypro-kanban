@@ -44,15 +44,16 @@ export async function postTodos({ taskData, token }) {
 }
 
 
-//put
-export async function putTodo({ taskData, id, token }) {
+//edit
+export async function editTodo({ taskData, id, token }) {
+    console.log(taskData);
     const response = await fetch(baseHost + `/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         method: "PUT",
         body: JSON.stringify({
-            text: taskData,
+            taskData,
         }),
     });
 
@@ -71,9 +72,7 @@ export async function delTodo({ id, token }) {
             Authorization: `Bearer ${token}`,
         },
         method: "DELETE",
-        body: JSON.stringify({
-            text,
-        }),
+
     });
 
     if (!response.status === 201) {

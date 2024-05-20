@@ -10,13 +10,13 @@ export default function Card({ topic, title, date, id }) {
                     <S.CardTopic $themeColor={topicHeader[topic]}>
                         <S.TopicText>{topic}</S.TopicText>
                     </S.CardTopic>
-                    <a href="#popBrowse" target="_self">
+                    <Link to={`task/${id}`} target="_self">
                         <S.CardBtn>
                             <S.CardBtnItem />
                             <S.CardBtnItem />
                             <S.CardBtnItem />
                         </S.CardBtn>
-                    </a>
+                    </Link>
                 </S.CardGroup>
                 <S.CardContent>
                     <Link to={`task/${id}`}>
