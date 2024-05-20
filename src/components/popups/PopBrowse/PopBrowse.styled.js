@@ -67,7 +67,7 @@ opacity: 0.4;
 opacity: 1 !important;
 display: block;
 background-color: ${({ $themeColor }) =>
-        topicStyles[$themeColor]?.backgroundColor || "#94a6be"};
+    topicStyles[$themeColor]?.backgroundColor || "#94a6be"};
 
 
   color: ${({ $themeColor }) => topicStyles[$themeColor]?.color || "#ffffff"};
@@ -99,7 +99,7 @@ export const RadioToolbar = styled.div`
 
 export const RadioToolbarLabel = styled.label`
     display: inline-block;
-    padding: 10px 14px 10px 14px;
+    padding: 6px 8px 6px 8px;
     border-radius: 20px;
     border: 0.7px solid var(--palette-navy-60, #94A6BE);
     background: transparent;
@@ -260,3 +260,9 @@ export const ButtonBrowseClose = styled.span`
     background-color: #33399b;
   
  }`
+
+export const FormLabel = styled.label`
+ color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;`

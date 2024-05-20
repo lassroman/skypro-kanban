@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTasks } from "../../../hooks/useTasks";
 import { postTodos } from "../../../Api";
 import { appRoutes } from "../../../lib/appRoutes";
+import { FormLabel } from "../PopBrowse/PopBrowse.styled";
 
 export default function PopNewCard() {
 
@@ -65,9 +66,9 @@ export default function PopNewCard() {
                                 action="#"
                             >
                                 <S.FormNewBlock>
-                                    <label htmlFor="formTitle" className="subttl">
+                                    <FormLabel htmlFor="formTitle" >
                                         Название задачи
-                                    </label>
+                                    </FormLabel>
                                     <S.FormNewInput
                                         type="text"
                                         name="title"
@@ -79,9 +80,9 @@ export default function PopNewCard() {
                                     />
                                 </S.FormNewBlock>
                                 <S.FormNewBlock>
-                                    <label htmlFor="textArea" className="subttl">
+                                    <FormLabel htmlFor="textArea" >
                                         Описание задачи
-                                    </label>
+                                    </FormLabel>
                                     <S.FormNewArea
                                         name="description"
                                         value={newTask.description}

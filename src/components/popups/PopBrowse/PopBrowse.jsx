@@ -142,9 +142,9 @@ export default function PopBrowse() {
                                     action="#"
                                 >
                                     <S.PopBrowseFormBlock>
-                                        <label htmlFor="textArea01" className="subttl">
+                                        <S.FormLabel>
                                             Описание задачи
-                                        </label>
+                                        </S.FormLabel>
                                         <S.FormBrowseArea
                                             name="description"
                                             id="textArea01"
@@ -166,9 +166,9 @@ export default function PopBrowse() {
                                     action="#"
                                 >
                                     <S.PopBrowseFormBlock>
-                                        <label htmlFor="textArea01" className="subttl">
+                                        <S.FormLabel>
                                             Описание задачи
-                                        </label>
+                                        </S.FormLabel>
                                         <S.FormBrowseArea
                                             name="description"
                                             id="textArea01"
@@ -184,13 +184,6 @@ export default function PopBrowse() {
                                     setSelectedDate={setSelectedDate} />
                             </S.PopBrowseWrap>
                         )}
-
-                        {/* <div className="theme-down__categories theme-down">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__theme _orange _active-category">
-                                <p className="_orange">Web Design</p>
-                            </div>
-                        </div> */}
                         {!isEdit && (
                             <S.PopBrowseButton>
                                 <S.ButtonGroup>

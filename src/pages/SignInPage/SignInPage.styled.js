@@ -90,7 +90,7 @@ color: rgba(148, 166, 190, 0.4);
     text-decoration:underline;
     `;
 
-export const SignInBtn = styled.span`
+export const SignInBtn = styled.button`
 width: 100%;
   height: 30px;
   background-color: #565EEF;

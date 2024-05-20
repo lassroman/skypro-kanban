@@ -13,9 +13,7 @@ export default function PopExit() {
                     <S.PopExitTitle>
                         Выйти из аккаунта?
                     </S.PopExitTitle>
-                    {/* <form className="pop-exit__form" id="formExit" action="#"> */}
                     <S.PopExitFormGroup>
-
                         <S.PopExitYes onClick={() => {
                             logout();
                             navigate(appRoutes.SIGNIN);
@@ -29,7 +27,6 @@ export default function PopExit() {
                             </S.PopExitNo>
                         </Link>
                     </S.PopExitFormGroup>
-                    {/* </form> */}
                 </S.PopExitBlock>
             </S.PopExitContainer>
         </S.PopExit>
