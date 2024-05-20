@@ -122,6 +122,7 @@ export default function PopNewCard() {
                             <S.RadioToolbarLabel2 htmlFor="radio2">Research</S.RadioToolbarLabel2>
 
                             <S.CategoriesThemeInput
+                                type="radio"
                                 id="radio3"
                                 name="topic"
                                 value="Copywriting"

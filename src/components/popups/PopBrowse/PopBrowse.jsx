@@ -11,7 +11,7 @@ import { topicHeader } from "../../../lib/topic";
 export default function PopBrowse() {
     const { id } = useParams();
     const { user } = useUser();
-    const { cards, updateTask } = useTasks();
+    const { cards, setCards } = useTasks();
     const navigate = useNavigate();
     const currentTask = cards.find((card) => id === card._id)
 
@@ -48,8 +48,7 @@ export default function PopBrowse() {
             token: user.token,
         })
             .then((data) => {
-                // console.log(updateTask)
-                updateTask(data.tasks)
+                setCards(data.tasks)
                 navigate(appRoutes.MAIN)
             })
             .catch((error) => {
@@ -65,8 +64,8 @@ export default function PopBrowse() {
         }
         await editTodo({ taskData, id, token: user.token })
             .then((data) => {
-                // console.log(data);
-                updateTask(data.tasks)
+                console.log(setCards)
+                setCards(data.tasks)
                 navigate(appRoutes.MAIN)
             })
             .catch((error) => {

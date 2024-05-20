@@ -52,9 +52,9 @@ export async function editTodo({ taskData, id, token }) {
             Authorization: `Bearer ${token}`,
         },
         method: "PUT",
-        body: JSON.stringify({
-            taskData,
-        }),
+        body: JSON.stringify(
+            taskData
+        ),
     });
 
     if (!response.status === 201) {
